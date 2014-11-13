@@ -38,6 +38,7 @@ createuser () {
     USER=www-data
     echo "Creating user $USER"
     setuser postgres createuser -s $USER
+    setuser postgres psql -c 'ALTER USER "www-data" WITH PASSWORD "www-data"'
 }
 
 createdb () {
@@ -120,7 +121,7 @@ then
 fi
 
 # Execute the specified command sequence
-for arg 
+for arg
 do
     $arg;
 done

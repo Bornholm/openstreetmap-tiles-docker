@@ -87,6 +87,7 @@ RUN a2enmod mod_tile
 
 # Ensure the webserver user can connect to the gis database
 RUN sed -i -e 's/local   all             all                                     peer/local gis www-data peer/' /etc/postgresql/9.3/main/pg_hba.conf
+RUN echo "host gis www-data samenet md5" >> /etc/postgresql/9.3/main/pg_hba.conf
 
 # Tune postgresql
 ADD postgresql.conf.sed /tmp/
